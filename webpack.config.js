@@ -22,17 +22,17 @@ module.exports = {
         })
     ],
     resolve: {
-        extensions: ['.js']
+        extensions: ['.js', '.jsx']
     },
     resolveLoader: {
         modules: ["node_modules"],
-        extensions: [".js", ".json"],
+        extensions: [".js", ".json", '.jsx'],
         mainFields: ["loader", "main"]
     },
     module: {
         loaders: [
         {
-            test: /\.jsx?$/,
+            test: /\.(js|jsx)$/,
             exclude: /(node_modules)/,
             loader: 'babel-loader',
             query: {
@@ -40,7 +40,7 @@ module.exports = {
             }
         },
         {
-            test: /\.js$/,
+            test: /\.(js|jsx)$/,
             loader: 'react-hot-loader/webpack',
             include: path.join(__dirname, 'src')
         },
