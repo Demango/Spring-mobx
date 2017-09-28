@@ -1,4 +1,4 @@
-package com.mango.demo;
+package com.mango.springmobx;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

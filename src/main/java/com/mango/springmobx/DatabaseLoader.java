@@ -1,4 +1,4 @@
-package com.mango.demo;
+package com.mango.springmobx;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

@@ -1,4 +1,4 @@
-package com.mango.demo;
+package com.mango.springmobx;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
