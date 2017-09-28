@@ -10,16 +10,16 @@ import lombok.Data;
 @Entity
 public class Task {
 
-	private @Id @GeneratedValue Long id;
-	private String title;
-	private String description;
-	private Boolean checked;
+    private @Id @GeneratedValue Long id;
+    private String title;
+    private String description;
+    private Boolean checked;
 
-	private Task() {}
+    private Task() {}
 
-	public Task(String title, String description, Boolean checked) {
-		this.title = title;
-		this.description = description;
-		this.checked = checked;
-	}
+    public Task(String title, String description, Boolean checked) {
+        this.title = title;
+        this.description = description;
+        this.checked = checked;
+    }
 }

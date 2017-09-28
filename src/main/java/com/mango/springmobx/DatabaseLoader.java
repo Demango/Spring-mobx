@@ -7,15 +7,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class DatabaseLoader implements CommandLineRunner {
 
-	private final TaskRepository repository;
+    private final TaskRepository repository;
 
-	@Autowired
-	public DatabaseLoader(TaskRepository repository) {
-		this.repository = repository;
-	}
+    @Autowired
+    public DatabaseLoader(TaskRepository repository) {
+        this.repository = repository;
+    }
 
-	@Override
-	public void run(String... strings) throws Exception {
-		this.repository.save(new Task("Run springboot", "Make sure it doesn't die repeatedly", true));
-	}
+    @Override
+    public void run(String... strings) throws Exception {
+        this.repository.save(new Task("Run springboot", "Make sure it doesn't die repeatedly", true));
+    }
 }
