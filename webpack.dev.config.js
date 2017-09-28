@@ -7,7 +7,7 @@ module.exports = {
     entry: [
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
-        './src/index'
+        './src/main/js/index'
     ],
     output: {
         path: path.join(__dirname, 'dist'),
@@ -18,7 +18,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             title: 'Boot React',
-            template: path.join(__dirname, 'assets/index-template.html')
+            template: path.join(__dirname, 'src/main/resources/index-template.html')
         })
     ],
     resolve: {
@@ -36,7 +36,8 @@ module.exports = {
             exclude: /(node_modules)/,
             loader: 'babel-loader',
             query: {
-                presets: ['es2015', 'react']
+                plugins: ['transform-decorators-legacy' ],
+                presets: ['es2015', 'stage-1', 'react']
             }
         },
         {
