@@ -6,9 +6,19 @@ import Task from './task'
 
 @inject('taskStore') @observer
 export default class TaskList extends React.Component {
+    constructor (props) {
+        super(props)
+
+        this.onToggle = this.onToggle.bind(this);
+    }
+
+    onToggle(task) {
+        this.props.taskStore.toggleTask(task);
+    }
+
     render() {
         const taskItems = this.props.taskStore.tasks.map((task) =>
-          <Task key={task.id} task={task} />
+          <Task onToggle={this.onToggle} key={task.id} task={task} />
         );
 
         return (

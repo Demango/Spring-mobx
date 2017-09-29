@@ -28,7 +28,7 @@ export default class NewTaskForm extends React.Component {
     }
 
     onAdd() {
-    	this.props.taskStore.addTask(this.state);
+        this.props.taskStore.addTask(this.state);
     }
 
     render() {

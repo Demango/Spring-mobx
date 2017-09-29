@@ -28,4 +28,17 @@ export default class TaskStore {
             this.tasks.push(response.entity);
         });
     }
+
+    @action
+    toggleTask(task) {
+        client({
+            method: 'PATCH',
+            path: '/api/tasks/'+task.id,
+            headers: {'Content-Type': 'application/json'},
+            entity: {checked: !task.checked}
+        })
+        .then(response => {
+            task.checked = response.entity.checked;
+        });
+    }
 }
