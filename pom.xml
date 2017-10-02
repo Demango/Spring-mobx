@@ -11,20 +11,6 @@
     <name>demo</name>
     <description>Demo project for Spring Boot</description>
 
-    <executions>
-            <execution>
-                <id>start yarn</id>
-                <phase>package</phase>
-                <goals>
-                    <goal>exec</goal>
-                </goals>
-                <configuration>
-                    <executable>yarn</executable>
-                    <commandlineArgs>start &</commandlineArgs>
-                </configuration>
-            </execution>
-        </executions>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -71,6 +57,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <dependency>
+           <groupId>net.sourceforge.nekohtml</groupId>
+           <artifactId>nekohtml</artifactId>
+           <version>1.9.21</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -78,6 +69,40 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>1.6</version>
+                <configuration>
+                    <installDirectory>target</installDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>install node and npm</id>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                        <configuration>
+                            <nodeVersion>v6.11.3</nodeVersion>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>install</arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>webpack build</id>
+                        <goals>
+                            <goal>webpack</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

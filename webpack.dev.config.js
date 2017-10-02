@@ -10,7 +10,7 @@ module.exports = {
         './src/main/js/index'
     ],
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.join(__dirname, 'public'),
         filename: 'bundle.js',
         publicPath: 'http://localhost:3000/'
     },
@@ -18,7 +18,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             title: 'Boot React',
-            template: path.join(__dirname, 'src/main/resources/index-template.html')
+            template: path.join(__dirname, 'src/main/resources/templates/index.html')
         })
     ],
     resolve: {
