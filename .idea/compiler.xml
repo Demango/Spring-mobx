@@ -2,17 +2,15 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Spring-mobx" />
+        <module name="react-and-spring-data-rest-basic" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="demo" target="1.8" />
-      <module name="Spring-mobx" target="1.8" />
+      <module name="react-and-spring-data-rest-basic" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
