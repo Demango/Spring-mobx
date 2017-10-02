@@ -2,9 +2,12 @@
   "name": "mobx-react-test-app",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "6.11.3"
+  },
   "dependencies": {
     "amdefine": "^1.0.1",
-    "classnames": "^2.2.5",
+    "classnames": "^2.2.5"
     "mobx": "^3.3.0",
     "mobx-react": "^4.3.2",
     "react": "^15.6.1",
@@ -20,7 +23,8 @@
     "bundle": "webpack --optimize-minimize --output-public-path './public'",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-prebuild": "./mvnw spring-boot:run &"
   },
   "devDependencies": {
     "babel": "^6.23.0",

@@ -1,5 +1,4 @@
-import { extendObservable, observable, action, runInAction } from 'mobx';
-import { observer, Provider, inject } from 'mobx-react';
+import { observer } from 'mobx-react';
 import React from 'react';
 import { render } from 'react-dom';
 

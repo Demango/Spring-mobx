@@ -11,6 +11,20 @@
     <name>demo</name>
     <description>Demo project for Spring Boot</description>
 
+    <executions>
+            <execution>
+                <id>start yarn</id>
+                <phase>package</phase>
+                <goals>
+                    <goal>exec</goal>
+                </goals>
+                <configuration>
+                    <executable>yarn</executable>
+                    <commandlineArgs>start &</commandlineArgs>
+                </configuration>
+            </execution>
+        </executions>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
