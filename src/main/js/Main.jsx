@@ -1,9 +1,9 @@
 import { Provider } from 'mobx-react';
 import React from 'react';
 import { render } from 'react-dom';
-import TaskList from './components/tasklist';
-import NewTaskForm from './components/newtaskform';
-import TaskStore from './stores/taskstore';
+import TaskList from 'components/tasklist';
+import NewTaskForm from 'components/newtaskform';
+import TaskStore from 'stores/taskstore';
 
 const store = new TaskStore();
 

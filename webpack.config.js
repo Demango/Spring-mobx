@@ -19,7 +19,7 @@ module.exports = {
         modules: [
             path.join(__dirname, 'src'),
             'node_modules',
-            'src/main/js/modules'
+            'src/main/js'
         ]
     },
     resolveLoader: {

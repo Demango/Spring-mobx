@@ -1,6 +1,6 @@
 import { observable, action } from 'mobx';
 
-import client from 'client';
+import client from 'modules/client';
 
 export default class TaskStore {
     @observable tasks = [];
