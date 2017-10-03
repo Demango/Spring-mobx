@@ -9,15 +9,20 @@ export default class TaskList extends React.Component {
         super(props)
 
         this.onToggle = this.onToggle.bind(this);
+        this.onDelete = this.onDelete.bind(this);
     }
 
     onToggle(task) {
         this.props.taskStore.toggleTask(task);
     }
 
+    onDelete(task) {
+        this.props.taskStore.deleteTask(task);
+    }
+
     render() {
         const taskItems = this.props.taskStore.tasks.map((task) =>
-          <Task onToggle={this.onToggle} key={task.id} task={task} />
+          <Task onToggle={this.onToggle} key={task.id} onDelete={this.onDelete} task={task} />
         );
 
         return (

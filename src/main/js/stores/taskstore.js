@@ -41,4 +41,15 @@ export default class TaskStore {
             task.checked = response.entity.checked;
         });
     }
+
+    @action
+    deleteTask(task) {
+        client({
+            method: 'DELETE',
+            path: '/api/tasks/'+task.id
+        })
+        .then(response => {
+            this.tasks.remove(task);
+        });
+    }
 }
