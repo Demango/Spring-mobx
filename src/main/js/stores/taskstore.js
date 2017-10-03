@@ -1,6 +1,6 @@
 import { observable, action } from 'mobx';
 
-const client = require('./../scripts/client');
+import client from 'client';
 
 export default class TaskStore {
     @observable tasks = [];

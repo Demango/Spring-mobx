@@ -18,7 +18,8 @@ module.exports = {
         extensions: [".js", ".json", ".jsx"],
         modules: [
             path.join(__dirname, 'src'),
-            'node_modules'
+            'node_modules',
+            'src/main/js/modules'
         ]
     },
     resolveLoader: {
