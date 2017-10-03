@@ -6,6 +6,9 @@ module.exports = {
     entry: [
         './src/main/js/index'
     ],
+    watchOptions: {
+        poll: true
+    },
     output: {
         path: path.join(__dirname, './target/classes/static/built/'),
         filename: 'bundle.js',
