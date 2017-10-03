@@ -1,12 +1,20 @@
-import { observable, action } from 'mobx';
+import { observable, action, computed } from 'mobx';
 
 import client from 'modules/client';
 
 export default class TaskStore {
     @observable tasks = [];
 
-    constructor(transportLayer, authorStore) {
+    constructor() {
         this.loadTasks();
+    }
+
+    @computed get completedCount() {
+        return this.tasks.filter(task => task.checked).length;
+    }
+
+    @computed get total() {
+        return this.tasks.length;
     }
 
     @action

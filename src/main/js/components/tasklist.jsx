@@ -3,33 +3,51 @@ import React from 'react';
 import { render } from 'react-dom';
 import Task from './task'
 
-@inject('taskStore') @observer
+@inject('taskStore', 'uiStore') @observer
 export default class TaskList extends React.Component {
     constructor (props) {
         super(props)
 
-        this.onToggle = this.onToggle.bind(this);
-        this.onDelete = this.onDelete.bind(this);
+        this.handleToggle = this.handleToggle.bind(this);
+        this.onToggleTask = this.onToggleTask.bind(this);
+        this.onDeleteTask = this.onDeleteTask.bind(this);
     }
 
-    onToggle(task) {
+    handleToggle() {
+        this.props.uiStore.showTasks = !this.props.uiStore.showTasks;
+    }
+
+    onToggleTask(task) {
         this.props.taskStore.toggleTask(task);
     }
 
-    onDelete(task) {
+    onDeleteTask(task) {
         this.props.taskStore.deleteTask(task);
     }
 
     render() {
         const taskItems = this.props.taskStore.tasks.map((task) =>
-          <Task onToggle={this.onToggle} key={task.id} onDelete={this.onDelete} task={task} />
+          <Task onToggle={this.onToggleTask} key={task.id} onDelete={this.onDeleteTask} task={task} />
+        );
+        const toggler = (
+            <button onClick={this.handleToggle}>
+                {this.props.uiStore.showTasks?
+                    'hide' :
+                    'show'
+                }
+            </button>
+        );
+        const taskHeader = (
+            <div>
+                <h2>Current tasks ({this.props.taskStore.completedCount}/{this.props.taskStore.total} done) {toggler}</h2>
+            </div>
         );
 
         return (
             <div>
-                <h2>Current tasks</h2>
+                {taskHeader}
                 <ul>
-                    {taskItems}
+                    {this.props.uiStore.showTasks && taskItems}
                 </ul>
             </div>
         )
