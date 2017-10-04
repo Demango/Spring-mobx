@@ -1,7 +1,7 @@
 import { observer, inject } from 'mobx-react';
 import React from 'react';
 import { render } from 'react-dom';
-import Task from './task'
+import Task from 'components/Task';
 
 export default class TaskList extends React.Component {
     render() {

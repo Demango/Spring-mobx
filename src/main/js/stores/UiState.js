@@ -1,5 +1,5 @@
 import { observable } from 'mobx';
 
-export default class UiStore {
+export default class UiState {
     @observable showTasks = false;
 }

@@ -2,7 +2,7 @@ import { observable, action, computed } from 'mobx';
 
 import client from 'modules/client';
 
-export default class TaskStore {
+export default class TaskState {
     @observable tasks = [];
 
     constructor() {
