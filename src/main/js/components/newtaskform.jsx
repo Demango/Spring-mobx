@@ -3,24 +3,28 @@ import { observer, Provider, inject } from 'mobx-react';
 import React from 'react';
 import { render } from 'react-dom';
 
+const initialState = {
+    title: '',
+    description: '',
+    checked: false
+};
+
 @inject('taskStore') @observer
 export default class NewTaskForm extends React.Component {
     constructor (props) {
-        super(props)
+        super(props);
 
         this.updateProperty = this.updateProperty.bind(this);
         this.onChange = this.onChange.bind(this);
         this.onAdd = this.onAdd.bind(this);
+
+        this.state = Object.assign({}, initialState);
     }
 
-    @observable state = {
-        title: '',
-        description: '',
-        checked: false
-    };
+    @observable state;
 
     updateProperty(key, value) {
-        this.state[key] = value
+        this.state[key] = value;
     }
 
     onChange(event) {
@@ -28,11 +32,18 @@ export default class NewTaskForm extends React.Component {
     }
 
     onAdd() {
-        this.props.taskStore.addTask(this.state);
+        this.props.taskStore.addTask(Object.assign({}, this.state));
+        this.resetState();
+    }
+
+    resetState() {
+        for (var key in initialState) {
+            this.state[key] = initialState[key];
+        }
     }
 
     render() {
-        const task = this.state
+        const task = this.state;
         return (
             <div>
                 <h1>New task</h1>

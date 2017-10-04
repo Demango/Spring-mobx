@@ -11,8 +11,8 @@
 		<relativePath/>
 	</parent>
 
-	<groupId>com.greglturnquist</groupId>
-	<artifactId>react-and-spring-data-rest-basic</artifactId>
+	<groupId>com.mango</groupId>
+	<artifactId>springmobx</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
