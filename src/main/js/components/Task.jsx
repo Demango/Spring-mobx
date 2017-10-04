@@ -6,8 +6,8 @@ var classNames = require('classnames');
 
 @observer
 export default class Task extends React.Component {
-    constructor (props) {
-        super(props)
+    constructor () {
+        super()
 
         this.handleToggle = this.handleToggle.bind(this);
         this.handleDelete = this.handleDelete.bind(this);

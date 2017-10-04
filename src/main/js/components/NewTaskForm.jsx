@@ -11,8 +11,8 @@ const initialState = {
 
 @inject('taskStore') @observer
 export default class NewTaskForm extends React.Component {
-    constructor (props) {
-        super(props);
+    constructor () {
+        super();
 
         this.updateProperty = this.updateProperty.bind(this);
         this.onChange = this.onChange.bind(this);

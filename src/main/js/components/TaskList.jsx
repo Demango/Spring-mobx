@@ -18,8 +18,8 @@ export default class TaskList extends React.Component {
 
 @inject('taskStore', 'uiStore') @observer
 class TaskHeader extends React.Component {
-    constructor (props) {
-        super(props);
+    constructor () {
+        super();
 
         this.handleToggle = this.handleToggle.bind(this);
     }
@@ -47,8 +47,8 @@ class TaskHeader extends React.Component {
 
 @inject('taskStore', 'uiStore') @observer
 class TaskItems extends React.Component {
-    constructor (props) {
-        super(props);
+    constructor () {
+        super();
 
         this.onToggleTask = this.onToggleTask.bind(this);
         this.onDeleteTask = this.onDeleteTask.bind(this);
