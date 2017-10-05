@@ -4,7 +4,7 @@ import client from 'modules/client';
 
 export default class TaskState {
     @observable tasks = [];
-    @observable state = 'done';
+    @observable isLoading = false;
 
     constructor() {
         this.loadTasks();
@@ -20,18 +20,18 @@ export default class TaskState {
 
     @action
     loadTasks() {
-        this.state = 'pending';
+        this.isLoading = true;
         client({method: 'GET', path: '/api/tasks'}).then(response => {
             runInAction(() => {
                 this.tasks = response.entity._embedded.tasks;
-                this.state = 'done';
+                this.isLoading = false;
             });
         });
     }
 
     @action
     addTask(task) {
-        this.state = 'pending';
+        this.isLoading = true;
         client({
             method: 'POST',
             path: '/api/tasks',
@@ -41,14 +41,14 @@ export default class TaskState {
         .then(response => {
             runInAction(() => {
                 this.tasks.push(response.entity);
-                this.state = 'done';
+                this.isLoading = false;
             });
         });
     }
 
     @action
     toggleTask(task) {
-        this.state = 'pending';
+        this.isLoading = true;
         client({
             method: 'PATCH',
             path: '/api/tasks/'+task.id,
@@ -58,14 +58,14 @@ export default class TaskState {
         .then(response => {
             runInAction(() => {
                 task.checked = response.entity.checked;
-                this.state = 'done';
+                this.isLoading = false;
             });
         });
     }
 
     @action
     deleteTask(task) {
-        this.state = 'pending';
+        this.isLoading = true;
         client({
             method: 'DELETE',
             path: '/api/tasks/'+task.id
@@ -73,7 +73,7 @@ export default class TaskState {
         .then(response => {
             runInAction(() => {
                 this.tasks.remove(task);
-                this.state = 'done';
+                this.isLoading = false;
             });
         });
     }

@@ -2,54 +2,30 @@ import { observable, action } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import React from 'react';
 import { render } from 'react-dom';
+import TaskFormState from 'stores/TaskFormState';
 
-const initialState = {
-    title: '',
-    description: '',
-    checked: false
-};
+const taskFormState = new TaskFormState();
 
 @inject('taskStore') @observer
 export default class NewTaskForm extends React.Component {
     constructor () {
         super();
 
-        this.updateProperty = this.updateProperty.bind(this);
-        this.onChange = this.onChange.bind(this);
         this.onAdd = this.onAdd.bind(this);
-
-        this.state = Object.assign({}, initialState);
-    }
-
-    @observable state;
-
-    @action
-    updateProperty(key, value) {
-        this.state[key] = value;
-    }
-
-    onChange(event) {
-        this.updateProperty(event.target.name, event.target.value)
     }
 
     onAdd() {
-        this.props.taskStore.addTask(Object.assign({}, this.state));
-        this.resetState();
-    }
-
-    resetState() {
-        for (var key in initialState) {
-            this.updateProperty(key, initialState[key]);
-        }
+        this.props.taskStore.addTask(Object.assign({}, taskFormState.state));
+        taskFormState.resetState();
     }
 
     render() {
-        const task = this.state;
+        const task = taskFormState.state;
         return (
             <div>
                 <h1>New task</h1>
-                <input type="text" name="title" placeholder="title" value={task.title} onChange={this.onChange}/>
-                <input type="text" name="description" placeholder="description" value={task.description} onChange={this.onChange}/>
+                <input type="text" name="title" placeholder="title" value={task.title} onChange={taskFormState.onChange}/>
+                <input type="text" name="description" placeholder="description" value={task.description} onChange={taskFormState.onChange}/>
                 <button onClick={this.onAdd}>Add</button>
             </div>
         )

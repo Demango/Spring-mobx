@@ -5,6 +5,6 @@ export default class UiState {
 
     @action
     toggleTasks() {
-    	this.showTasks = !this.showTasks;
+        this.showTasks = !this.showTasks;
     }
 }
