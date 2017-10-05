@@ -1,9 +1,10 @@
-import { observable, action, computed } from 'mobx';
+import { observable, action, computed, runInAction } from 'mobx';
 
 import client from 'modules/client';
 
 export default class TaskState {
     @observable tasks = [];
+    @observable state = 'done';
 
     constructor() {
         this.loadTasks();
@@ -19,13 +20,18 @@ export default class TaskState {
 
     @action
     loadTasks() {
+        this.state = 'pending';
         client({method: 'GET', path: '/api/tasks'}).then(response => {
-            this.tasks = response.entity._embedded.tasks;
+            runInAction(() => {
+                this.tasks = response.entity._embedded.tasks;
+                this.state = 'done';
+            });
         });
     }
 
     @action
     addTask(task) {
+        this.state = 'pending';
         client({
             method: 'POST',
             path: '/api/tasks',
@@ -33,12 +39,16 @@ export default class TaskState {
             entity: task
         })
         .then(response => {
-            this.tasks.push(response.entity);
+            runInAction(() => {
+                this.tasks.push(response.entity);
+                this.state = 'done';
+            });
         });
     }
 
     @action
     toggleTask(task) {
+        this.state = 'pending';
         client({
             method: 'PATCH',
             path: '/api/tasks/'+task.id,
@@ -46,18 +56,25 @@ export default class TaskState {
             entity: {checked: !task.checked}
         })
         .then(response => {
-            task.checked = response.entity.checked;
+            runInAction(() => {
+                task.checked = response.entity.checked;
+                this.state = 'done';
+            });
         });
     }
 
     @action
     deleteTask(task) {
+        this.state = 'pending';
         client({
             method: 'DELETE',
             path: '/api/tasks/'+task.id
         })
         .then(response => {
-            this.tasks.remove(task);
+            runInAction(() => {
+                this.tasks.remove(task);
+                this.state = 'done';
+            });
         });
     }
 }

@@ -1,5 +1,5 @@
-import { observable, action, runInAction } from 'mobx';
-import { observer, Provider, inject } from 'mobx-react';
+import { observable, action } from 'mobx';
+import { observer, inject } from 'mobx-react';
 import React from 'react';
 import { render } from 'react-dom';
 
@@ -23,6 +23,7 @@ export default class NewTaskForm extends React.Component {
 
     @observable state;
 
+    @action
     updateProperty(key, value) {
         this.state[key] = value;
     }
@@ -38,7 +39,7 @@ export default class NewTaskForm extends React.Component {
 
     resetState() {
         for (var key in initialState) {
-            this.state[key] = initialState[key];
+            this.updateProperty(key, initialState[key]);
         }
     }
 

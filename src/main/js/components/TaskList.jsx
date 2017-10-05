@@ -12,7 +12,7 @@ export default class TaskList extends React.Component {
                     <TaskItems />
                 </ul>
             </div>
-        )
+        );
     }
 }
 
@@ -25,7 +25,7 @@ class TaskHeader extends React.Component {
     }
 
     handleToggle() {
-        this.props.uiStore.showTasks = !this.props.uiStore.showTasks;
+        this.props.uiStore.toggleTasks();
     }
 
     render() {
