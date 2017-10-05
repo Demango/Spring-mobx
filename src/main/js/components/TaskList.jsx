@@ -3,20 +3,21 @@ import React from 'react';
 import { render } from 'react-dom';
 import Task from 'components/Task';
 
+@inject('taskStore', 'uiStore')
 export default class TaskList extends React.Component {
     render() {
         return (
             <div>
-                <TaskHeader />
+                <TaskHeader taskStore={this.props.taskStore} uiStore={this.props.uiStore} />
                 <ul>
-                    <TaskItems />
+                    <TaskItems taskStore={this.props.taskStore} uiStore={this.props.uiStore} />
                 </ul>
             </div>
         );
     }
 }
 
-@inject('taskStore', 'uiStore') @observer
+@observer
 class TaskHeader extends React.Component {
     constructor () {
         super();
@@ -45,7 +46,7 @@ class TaskHeader extends React.Component {
     }
 }
 
-@inject('taskStore', 'uiStore') @observer
+@observer
 class TaskItems extends React.Component {
     constructor () {
         super();
