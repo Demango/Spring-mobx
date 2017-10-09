@@ -27,8 +27,7 @@ export default class TaskState {
     @action
     loadTasks() {
         this.isLoading = true;
-        client({method: 'GET', path: '/api/tasks'})
-        .then(response => {
+        client({method: 'GET', path: '/api/tasks'}).then(response => {
             runInAction(() => {
                 this.tasks = response.entity._embedded.tasks;
                 this.isLoading = false;

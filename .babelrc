@@ -1,10 +1,14 @@
 {
-    "presets": ["es2015", "stage-1", "react"],
-    "plugins": [
-        ["module-resolver", {
-            "root": ["./src/main/js"]
-        }],
-        ["transform-decorators-legacy"],
-        ["rewire"]
-    ]
+    "env": {
+        "test": {
+            "presets": ["es2015", "stage-1", "react"],
+            "plugins": [
+                ["module-resolver", {
+                    "root": ["./src/main/js"]
+                }],
+                ["transform-decorators-legacy"],
+                ["rewire"]
+            ]
+        }
+      }
 }

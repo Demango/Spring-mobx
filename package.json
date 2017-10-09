@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "cross-env": "^5.0.5",
     "mobx": "^3.3.0",
     "mobx-react": "^4.3.2",
     "react": "^16.0.0",
@@ -16,9 +17,9 @@
   "scripts": {
     "watch": "webpack --watch -d --display-error-details",
     "build": "webpack",
-    "test": "mocha -r babel-register src/main/js/test/helpers/browser.js src/main/js/test/**/*.spec.js",
-    "cover": "nyc -x src/main/js/test mocha -r babel-register src/main/js/test/helpers/browser.js src/main/js/test/**/*.spec.js",
-    "watch-test": "mocha -w -r babel-register src/main/js/test/helpers/browser.js src/main/js/test/**/*.spec.js"
+    "test": "cross-env BABEL_ENV=test mocha -r babel-register src/main/js/test/helpers/browser.js src/main/js/test/**/*.spec.js",
+    "cover": "cross-env BABEL_ENV=test nyc -x src/main/js/test mocha -r babel-register src/main/js/test/helpers/browser.js src/main/js/test/**/*.spec.js",
+    "watch-test": "cross-env BABEL_ENV=test mocha -w -r babel-register src/main/js/test/helpers/browser.js src/main/js/test/**/*.spec.js"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
