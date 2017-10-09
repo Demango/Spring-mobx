@@ -6,11 +6,17 @@ export default class TaskState {
     @observable tasks = [];
     @observable isLoading = false;
 
-    constructor() {
-        this.loadTasks();
+    constructor(tasks) {
+        if (tasks) {
+            runInAction(() => {
+                this.tasks = tasks;
+            });
+        } else {
+            this.loadTasks();
+        }
     }
 
-    @computed get completedCount() {
+    @computed get checkedCount() {
         return this.tasks.filter(task => task.checked).length;
     }
 
@@ -21,7 +27,8 @@ export default class TaskState {
     @action
     loadTasks() {
         this.isLoading = true;
-        client({method: 'GET', path: '/api/tasks'}).then(response => {
+        client({method: 'GET', path: '/api/tasks'})
+        .then(response => {
             runInAction(() => {
                 this.tasks = response.entity._embedded.tasks;
                 this.isLoading = false;

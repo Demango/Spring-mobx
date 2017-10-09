@@ -40,7 +40,7 @@ class TaskHeader extends React.Component {
         );
         return (
             <div>
-                <h2>Current tasks ({this.props.taskStore.completedCount}/{this.props.taskStore.total} done) {toggler}</h2>
+                <h2>Current tasks ({this.props.taskStore.checkedCount}/{this.props.taskStore.total} done) {toggler}</h2>
             </div>
         );
     }

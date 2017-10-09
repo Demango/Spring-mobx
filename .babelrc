@@ -4,6 +4,7 @@
         ["module-resolver", {
             "root": ["./src/main/js"]
         }],
-        ["transform-decorators-legacy"]
+        ["transform-decorators-legacy"],
+        ["rewire"]
     ]
 }
