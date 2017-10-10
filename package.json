@@ -18,8 +18,14 @@
     "watch": "webpack --watch -d --display-error-details",
     "build": "webpack",
     "test": "cross-env BABEL_ENV=test mocha -r babel-register src/main/js/test/helpers/browser.js src/main/js/test/**/*.spec.js",
-    "cover": "cross-env BABEL_ENV=test nyc -x src/main/js/test mocha -r babel-register src/main/js/test/helpers/browser.js src/main/js/test/**/*.spec.js",
+    "cover": "cross-env BABEL_ENV=test nyc mocha -r babel-register src/main/js/test/helpers/browser.js src/main/js/test/**/*.spec.js",
     "watch-test": "cross-env BABEL_ENV=test mocha -w -r babel-register src/main/js/test/helpers/browser.js src/main/js/test/**/*.spec.js --compilers jsx:babel-register --compilers js:babel-register"
+  },
+  "nyc": {
+    "exclude": [
+      "src/**/*.spec.js",
+      "src/main/js/modules/*"
+    ]
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
