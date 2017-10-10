@@ -25,7 +25,7 @@ export default class taskFormState {
     }
 
     resetState() {
-        for (var key in initialState) {
+        for (let key in initialState) {
             this.updateProperty(key, initialState[key]);
         }
     }

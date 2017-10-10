@@ -6,19 +6,19 @@ import {when} from 'mobx';
 import TaskState from 'stores/TaskState';
 
 describe('TaskState', function () {
-    let clientStub;
+    let clientStub, store;
 
     beforeEach(function() {
         clientStub = sinon.stub()
         TaskState.__Rewire__('client', clientStub);
-        let response = {entity:{_embedded:{tasks:[
+        const response = {entity:{_embedded:{tasks:[
             {id: 1, title: 'title', description: 'desc', checked: false}
         ]}}};
         clientStub.resolves(response);
     });
 
     it('should try to load an initial state', function (done) {
-        var store = new TaskState();
+        store = new TaskState();
 
         sinon.assert.calledWith(clientStub, {method: 'GET', path: '/api/tasks'});
         when(() => store.tasks.length > 0, () => {
@@ -32,7 +32,7 @@ describe('TaskState', function () {
     });
 
     it('should add a task', function (done) {
-        var store = new TaskState();
+        store = new TaskState();
 
         let newTask = {title: 'new task title', description: 'new task desc', checked: false};
         let taskResponse = newTask;
@@ -56,11 +56,11 @@ describe('TaskState', function () {
     });
 
     it('should toggle a task', function (done) {
-        var store = new TaskState([{id: 1, title: 'title', description: 'desc', checked: false}]);
+        store = new TaskState([{id: 1, title: 'title', description: 'desc', checked: false}]);
 
         when(() => store.tasks.length > 0, () => {
             try {
-                let response = {entity: store.tasks[0]};
+                const response = {entity: store.tasks[0]};
                 response.entity.checked = true;
                 clientStub.resolves(response);
 
@@ -83,11 +83,11 @@ describe('TaskState', function () {
     });
 
     it('should remove a task', function (done) {
-        var store = new TaskState([{id: 1, title: 'title', description: 'desc', checked: false}]);
+        store = new TaskState([{id: 1, title: 'title', description: 'desc', checked: false}]);
 
         when(() => store.tasks.length > 0, () => {
             try {
-                let response = {entity: store.tasks[0]};
+                const response = {entity: store.tasks[0]};
                 response.entity.checked = true;
                 clientStub.resolves(response);
 
@@ -108,7 +108,7 @@ describe('TaskState', function () {
     });
 
     it('should compute total number of tasks', function (done) {
-        var store = new TaskState([{id: 1, title: 'title', description: 'desc', checked: false}]);
+        store = new TaskState([{id: 1, title: 'title', description: 'desc', checked: false}]);
 
         when(() => store.tasks.length > 0, () => {
             try {
@@ -121,7 +121,7 @@ describe('TaskState', function () {
     });
 
     it('should compute number of checked tasks', function (done) {
-        var store = new TaskState(
+        store = new TaskState(
             [
                 {id: 1, title: 'title', description: 'desc', checked: false},
                 {id: 2, title: 'title', description: 'desc', checked: true}

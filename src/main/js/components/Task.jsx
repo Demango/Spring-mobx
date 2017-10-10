@@ -2,7 +2,7 @@ import { observer } from 'mobx-react';
 import React from 'react';
 import { render } from 'react-dom';
 
-var classNames = require('classnames');
+let classNames = require('classnames');
 
 @observer
 export default class Task extends React.Component {
@@ -22,12 +22,12 @@ export default class Task extends React.Component {
     }
 
     render() {
-        var taskClasses = classNames(
+        let taskClasses = classNames(
             {
                 'checked': this.props.task.checked
             }
         );
-        var buttonClasses = classNames(
+        let buttonClasses = classNames(
             'delete-button'
         );
 
