@@ -9,7 +9,7 @@ describe('TaskState', function () {
     let clientStub, store;
 
     beforeEach(function() {
-        clientStub = sinon.stub()
+        clientStub = sinon.stub();
         TaskState.__Rewire__('client', clientStub);
         const response = {entity:{_embedded:{tasks:[
             {id: 1, title: 'title', description: 'desc', checked: false}
