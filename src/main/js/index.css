@@ -4,3 +4,36 @@
 .checked {
     text-decoration: line-through;
 }
+.slopetest {
+	display: flex;
+	width:50px;
+    height: 100px;
+    position: relative;
+    float: left;
+    background: green;
+}
+.slopetest:after {
+    content: '';
+    display: block;
+    bottom: 0px;
+    width: 0px;
+    height: 0px;
+    border-top: 100px solid green;
+    border-right: 15px solid red;
+}
+
+.slopetest:nth-child(even) {
+    background: red;
+}
+
+.slopetest:nth-child(even):after {
+    border-top: 100px solid red;
+}
+
+.slopetest:nth-child(odd) {
+
+}
+
+.slopetest:nth-child(odd):after {
+
+}

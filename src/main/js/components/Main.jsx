@@ -18,6 +18,18 @@ export default class Main extends React.Component {
         return (
             <Provider rootStore={this.rootStore}>
                 <div>
+                    <div className="slopetest">
+                        slope test
+                    </div>
+                    <div className="slopetest">
+                        slope test
+                    </div>
+                    <div className="slopetest">
+                        slope test
+                    </div>
+                    <div className="slopetest">
+                        slope test
+                    </div>
                     <NewTaskForm />
                     <TaskList />
                 </div>
