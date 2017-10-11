@@ -7,7 +7,8 @@
                     "root": ["./src/main/js"]
                 }],
                 ["transform-decorators-legacy"],
-                ["rewire"]
+                ["rewire"],
+                ["istanbul"]
             ]
         }
       }

@@ -46,7 +46,7 @@ describe('NewTaskForm', function () {
 
     it('should add a new task', function () {
         wrapper.find('button').simulate('click');
-        expect(props.rootStore.taskStore.addTask).to.have.been.called;
+        expect(props.rootStore.taskStore.addTask).to.have.been.calledWith(Object.assign({}, storeStub.state));
         expect(storeStub.resetState).to.have.been.called;
     });
 });

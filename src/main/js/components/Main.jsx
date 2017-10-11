@@ -24,7 +24,7 @@ export default class Main extends React.Component {
             </Provider>
         )
     }
-};
+}
 
 class RootStore {
     constructor() {
