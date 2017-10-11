@@ -3,14 +3,21 @@ import React from 'react';
 import { render } from 'react-dom';
 import Task from 'components/Task';
 
-@inject('taskStore', 'uiStore')
+@inject('rootStore')
 export default class TaskList extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.taskStore = props.rootStore.taskStore;
+        this.uiStore = props.rootStore.uiStore;
+    }
+
     render() {
         return (
             <div>
-                <TaskHeader taskStore={this.props.taskStore} uiStore={this.props.uiStore} />
+                <TaskHeader taskStore={this.taskStore} uiStore={this.uiStore} />
                 <ul>
-                    <TaskItems taskStore={this.props.taskStore} uiStore={this.props.uiStore} />
+                    <TaskItems taskStore={this.taskStore} uiStore={this.uiStore} />
                 </ul>
             </div>
         );
